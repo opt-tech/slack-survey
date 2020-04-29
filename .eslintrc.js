@@ -21,6 +21,8 @@ module.exports = {
     '@typescript-eslint/no-empty-function': 'off',
     '@typescript-eslint/no-use-before-define': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
+    '@typescript-eslint/no-non-null-assertion': 'off',
+    '@typescript-eslint/camelcase': 'off'
     'import/default': 'off',
     'import/order': 'off',
     'no-console': 'off',
@@ -33,18 +35,16 @@ module.exports = {
     'simple-import-sort/sort': 'error',
     'sort-imports': 'off',
   },
-  overrides: [
-    {
-      files: '*.js',
-      rules: {
-        'import/order': [
-          'error',
-          {
-            'newlines-between': 'always',
-          },
-        ],
-        'simple-import-sort/sort': 'off',
-      },
+  overrides: [{
+    files: '*.js',
+    rules: {
+      'import/order': [
+        'error',
+        {
+          'newlines-between': 'always',
+        },
+      ],
+      'simple-import-sort/sort': 'off',
     },
-  ],
+  }, ],
 }

@@ -1,1 +1,2 @@
-export { hello } from './src/function/hello'
+export { sendSurvey } from './src/function/send-survey'
+export { interactiveComponent } from './src/function/execute-interactive-component'
