@@ -2,9 +2,6 @@
   "name": "slack-survey",
   "version": "1.0.0",
   "description": "Serverless webpack example using Typescript",
-  "engines": {
-    "node": ">= 12"
-  },
   "main": "handler.js",
   "scripts": {
     "fix": "run-p fix:*",

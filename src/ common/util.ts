@@ -1,3 +1,5 @@
+import { RequestBody } from './slack-types'
+
 export function camelCase(str: string): string {
   return str.replace(/[-_](.)/g, (m, g) => g.toUpperCase()).replace(/^./, v => v.toLowerCase())
 }
@@ -32,4 +34,9 @@ export function verifySubscription(challenge: string | undefined): boolean {
     ret = true
   }
   return ret
+}
+
+export function okResponse(body?: string) {
+  const responseBody = body ? JSON.stringify(body) : ''
+  return { statusCode: 200, body: responseBody }
 }

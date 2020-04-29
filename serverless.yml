@@ -29,12 +29,38 @@ provider:
       Action:
         - "dynamodb:*"
       Resource:
-        - "arn:aws:dynamodb:us-east-1:*:table/${self:service:name}-${env:STAGE}"
+        - "arn:aws:dynamodb:*:*:table/${self:service:name}-${env:STAGE}-*"
+
+resources:
+  Resources:
+    answer:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: "${self:service:name}-${env:STAGE}-answer"
+        AttributeDefinitions:
+          - AttributeName: user
+            AttributeType: S
+          - AttributeName: survey_id
+            AttributeType: N
+        KeySchema:
+          - AttributeName: user
+            KeyType: HASH
+          - AttributeName: survey_id
+            KeyType: RANGE
+        ProvisionedThroughput:
+          ReadCapacityUnits: 10
+          WriteCapacityUnits: 10
 
 functions:
-  hello:
-    handler: handler.hello
+  send-survey:
+    handler: handler.sendSurvey
     events:
       - http:
-          method: get
-          path: hello
+          method: post
+          path: send-survey
+  execute-interactive-component:
+    handler: handler.interactiveComponent
+    events:
+      - http:
+          path: execute-interactive-component
+          method: post
